@@ -7,9 +7,9 @@ export async function addItem(item: Item) {
     try {
         return await prisma.item.create({
             data: {
-                Name: item.name,
-                Quantity: parseInt(item.qty),
-                Price: parseFloat(item.price)
+                name: item.name,
+                quantity: parseInt(item.qty),
+                price: parseFloat(item.price)
             }
         });
     } catch (error) {
@@ -22,7 +22,7 @@ export async function deleteItem(id: string) {
     try {
         return await prisma.item.delete({
             where: {
-                ItemID: parseInt(id)
+                id: parseInt(id)
             }
         });
     } catch (error) {
@@ -35,12 +35,12 @@ export function updateItem(id: string, item: Item) {
   try {
       return prisma.item.update({
           where: {
-              ItemID: parseInt(id)
+              id: parseInt(id)
           },
           data: {
-              Name: item.name,
-              Quantity: parseInt(item.qty),
-              Price: parseFloat(item.price)
+              name: item.name,
+              quantity: parseInt(item.qty),
+              price: parseFloat(item.price)
           }
       });
   } catch (e) {

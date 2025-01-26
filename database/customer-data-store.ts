@@ -6,10 +6,10 @@ export async function addCustomer(customer: Customer) {
     try {
         return await prisma.customer.create({
             data: {
-                Name: customer.name,
-                Nic: customer.nic,
-                Email: customer.email,
-                Phone: parseInt(customer.phone)
+                name: customer.name,
+                nic: customer.nic,
+                email: customer.email,
+                phone: parseInt(customer.phone)
             }
         });
     } catch (error) {
@@ -21,7 +21,7 @@ export async function deleteCustomer(email: string) {
     try {
         return await prisma.customer.delete({
             where: {
-                Email: email
+                email: email
             }
         });
     } catch (error) {
@@ -34,13 +34,13 @@ export async function updateCustomer( id: number, customer: Customer) {
     try {
         return await prisma.customer.update({
             where: {
-                CustomerID: id
+                id: id
             },
             data: {
-                Name: customer.name,
-                Nic: customer.nic,
-                Email: customer.email,
-                Phone: parseInt(customer.phone)
+                name: customer.name,
+                nic: customer.nic,
+                email: customer.email,
+                phone: parseInt(customer.phone)
             }
         });
     } catch (error) {

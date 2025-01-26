@@ -1,4 +1,4 @@
-
+drop database if exists Thogakade;
 -- Create database schema
 
 CREATE DATABASE Thogakade;
@@ -9,15 +9,15 @@ USE Thogakade;
 
 CREATE TABLE Customer (
 
-                          CustomerID INT AUTO_INCREMENT PRIMARY KEY,
+                          id INT AUTO_INCREMENT PRIMARY KEY,
 
-                          Name VARCHAR(100) NOT NULL,
+                          name VARCHAR(100) NOT NULL,
 
-                          Nic DECIMAL(10, 2) NOT NULL,
+                          nic VARCHAR(20) NOT NULL,
 
-                          Email VARCHAR(100) UNIQUE NOT NULL,
+                          email VARCHAR(100) UNIQUE NOT NULL,
 
-                          Phone INT NOT NULL
+                          phone INT NOT NULL
 
 
 );
@@ -28,7 +28,7 @@ CREATE TABLE Customer (
 
 CREATE TABLE Item (
 
-                      ItemID INT AUTO_INCREMENT PRIMARY KEY,
+                      id INT AUTO_INCREMENT PRIMARY KEY,
 
                       Name VARCHAR(100) NOT NULL,
 
@@ -44,13 +44,13 @@ CREATE TABLE Item (
 
 CREATE TABLE `Order` (
 
-                         OrderID INT AUTO_INCREMENT PRIMARY KEY,
+                         orderId INT AUTO_INCREMENT PRIMARY KEY,
 
-                         CustomerID INT NOT NULL,
+                         customerID INT NOT NULL,
 
-                         OrderDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+                         orderDate DATETIME DEFAULT CURRENT_TIMESTAMP,
 
-                         FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID) ON DELETE CASCADE
+                         FOREIGN KEY (customerID) REFERENCES Customer(id) ON DELETE CASCADE
 
 );
 
@@ -60,19 +60,19 @@ CREATE TABLE `Order` (
 
 CREATE TABLE OrderDetails (
 
-                              OrderDetailsID INT AUTO_INCREMENT PRIMARY KEY,
+                              orderDetailId INT AUTO_INCREMENT PRIMARY KEY,
 
-                              OrderID INT NOT NULL,
+                              orderID INT NOT NULL,
 
-                              ItemID INT NOT NULL,
+                              itemID INT NOT NULL,
 
-                              Quantity INT NOT NULL,
+                              quantity INT NOT NULL,
 
-                              Price DECIMAL(10, 2) NOT NULL,
+                              price DECIMAL(10, 2) NOT NULL,
 
-                              FOREIGN KEY (OrderID) REFERENCES `Order`(OrderID) ON DELETE CASCADE,
+                              FOREIGN KEY (orderID) REFERENCES `Order`(orderId) ON DELETE CASCADE,
 
-                              FOREIGN KEY (ItemID) REFERENCES Item(ItemID) ON DELETE CASCADE
+                              FOREIGN KEY (itemID) REFERENCES Item(id) ON DELETE CASCADE
 
 );
 

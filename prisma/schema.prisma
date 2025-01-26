@@ -8,35 +8,35 @@ datasource db {
 }
 
 model customer {
-  CustomerID Int     @id @default(autoincrement())
-  Name       String  @db.VarChar(100)
-  Nic        Decimal @db.Decimal(10, 2)
-  Email      String  @unique(map: "Email") @db.VarChar(100)
-  Phone      Int
+  email String @unique(map: "email") @db.VarChar(100)
+  id    Int    @id @default(autoincrement())
+  name  String @db.VarChar(100)
+  nic   String @db.VarChar(20)
+  phone Int
 }
 
 model item {
-  ItemID   Int     @id @default(autoincrement())
-  Name     String  @db.VarChar(100)
-  Quantity Int
-  Price    Decimal @db.Decimal(10, 2)
+  id       Int     @id @default(autoincrement())
+  name     String  @db.VarChar(100)
+  price    Decimal @db.Decimal(10, 2)
+  quantity Int
 }
 
 model order {
-  OrderID    Int       @id @default(autoincrement())
-  CustomerID Int
-  OrderDate  DateTime? @default(now()) @db.DateTime(0)
+  customerID Int
+  orderDate  DateTime? @default(now()) @db.DateTime(0)
+  orderId    Int       @id @default(autoincrement())
 
-  @@index([CustomerID], map: "CustomerID")
+  @@index([customerID], map: "customerID")
 }
 
 model orderdetails {
-  OrderDetailsID Int     @id @default(autoincrement())
-  OrderID        Int
-  ItemID         Int
-  Quantity       Int
-  Price          Decimal @db.Decimal(10, 2)
+  itemID        Int
+  orderDetailId Int     @id @default(autoincrement())
+  orderID       Int
+  price         Decimal @db.Decimal(10, 2)
+  quantity      Int
 
-  @@index([ItemID], map: "ItemID")
-  @@index([OrderID], map: "OrderID")
+  @@index([itemID], map: "itemID")
+  @@index([orderID], map: "orderID")
 }

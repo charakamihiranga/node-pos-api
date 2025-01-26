@@ -4,12 +4,13 @@ import itemRoutes from "./routes/item-routes";
 // initialize express
 const app = express();
 
-app.get('/', (req, res, next) => {
+app.use('/',(req,res,next)=>{
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, content-type');
+
   next();
-});
+})
 
 // use express.json() to parse incoming requests with JSON payloads
 app.use(express.json());
