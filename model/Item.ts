@@ -1,13 +1,7 @@
 export default class Item {
-    id: number;
-    name: string;
-    qty: number;
-    price: number;
+    id!: string;
+    name!: string;
+    qty!: string;
+    price!: string;
 
-    constructor(id: number, name: string, qty: number, price: number){
-        this.id = id;
-        this.name = name;
-        this.qty = qty;
-        this.price = price;
-    }
 }

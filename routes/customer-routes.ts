@@ -39,7 +39,7 @@ router.put("/update/:id", async (req, res) => {
     }
 });
 
-router.get("/all", async (req, res) => {
+router.get("/all", async ( req, res) => {
     try {
         const customers = await getCustomers();
         res.status(200).json(customers);
