@@ -17,11 +17,11 @@ export async function addCustomer(customer: Customer) {
         throw error;
     }
 }
-export async function deleteCustomer(email: string) {
+export async function deleteCustomer(id: number) {
     try {
         return await prisma.customer.delete({
             where: {
-                email: email
+                id: id
             }
         });
     } catch (error) {

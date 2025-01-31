@@ -1,7 +1,7 @@
 export default class Item {
     id!: string;
     name!: string;
-    qty!: string;
+    quantity!: string;
     price!: string;
 
 }

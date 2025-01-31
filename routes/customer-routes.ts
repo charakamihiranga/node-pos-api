@@ -16,10 +16,10 @@ router.post("/add",async (req, res) => {
     }
 });
 
-router.delete("/remove/:email", async (req, res) => {
-    const email: string = req.params.email;
+router.delete("/remove/:id", async (req, res) => {
+    const id: number = parseInt(req.params.id);
     try {
-        const deletedCustomer = await deleteCustomer(email);
+        const deletedCustomer = await deleteCustomer(id);
         res.status(200).json(deletedCustomer);
     } catch (e) {
         console.log(`Error deleting customer: ${e}`);

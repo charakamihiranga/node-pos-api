@@ -1,6 +1,7 @@
 import express from 'express';
 import customerRoutes from "./routes/customer-routes";
 import itemRoutes from "./routes/item-routes";
+import orderRoutes from "./routes/order-routes";
 // initialize express
 const app = express();
 
@@ -18,6 +19,8 @@ app.use(express.json());
 app.use('/customer', customerRoutes)
 // use the itemRoutes
 app.use('/item', itemRoutes)
+// use the orderRoutes
+app.use('/order', orderRoutes)
 
 app.listen(3000, () => {
   console.log('Server is running on http://localhost:3000');

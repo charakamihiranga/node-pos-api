@@ -8,7 +8,7 @@ export async function addItem(item: Item) {
         return await prisma.item.create({
             data: {
                 name: item.name,
-                quantity: parseInt(item.qty),
+                quantity: parseInt(item.quantity),
                 price: parseFloat(item.price)
             }
         });
@@ -39,7 +39,7 @@ export function updateItem(id: string, item: Item) {
           },
           data: {
               name: item.name,
-              quantity: parseInt(item.qty),
+              quantity: parseInt(item.quantity),
               price: parseFloat(item.price)
           }
       });
